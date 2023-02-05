@@ -1,6 +1,8 @@
 package com.atguigu.spring6.bean;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,6 +12,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @date 2023/2/4
  */
 public class HelloWorldTest {
+
+    private Logger logger = LoggerFactory.getLogger(HelloWorldTest.class);
 
     /**
      * 1. 底层是怎么创建对象的，是通过反射机制调用无参数构造方法吗？
@@ -27,6 +31,7 @@ public class HelloWorldTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
         helloWorld.sayHello();
+        logger.info("成功！");
     }
 
 }
